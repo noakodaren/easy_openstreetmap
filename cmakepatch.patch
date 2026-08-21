@@ -1,0 +1,35 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 485f407..6f3213a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,6 +10,10 @@ message(STATUS "Module path: ${CMAKE_MODULE_PATH}")
+ set(PYBIND11_FINDPYTHON ON)
+ find_package(pybind11 CONFIG REQUIRED)
+ 
++if(SKBUILD_STATE STREQUAL "sdist")
++#######################################################################
++# source dist collection
++#
+ 
+ include(FetchContent)
+ 
+@@ -28,8 +32,10 @@ FetchContent_Declare(protozero
+ 
+ FetchContent_MakeAvailable(libosmium protozero)
+ 
+-# Real build
+-if(NOT SKBUILD_STATE STREQUAL "sdist")
++else()
++#######################################################################
++# wheel build
++#
+ 
+ set(OSMIUM_COMPONENTS io pbf xml)
+ 
+@@ -105,4 +111,4 @@ if(APPLE)
+     set_target_properties(filter PROPERTIES CXX_VISIBILITY_PRESET "default")
+ endif()
+ 
+-endif() # Not SDist
+\ No newline at end of file
++endif() # Not SDist

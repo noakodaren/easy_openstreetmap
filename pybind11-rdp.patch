@@ -1,0 +1,19 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0e5c345..ba95c66 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -41,12 +41,12 @@ set(CMAKE_CXX_STANDARD 14)
+ # scikit-build-core's built-in backport)
+ find_package(Python REQUIRED COMPONENTS Interpreter Development.Module)
+ find_package(pybind11 CONFIG REQUIRED)
+-include_directories(SYSTEM ${PROJECT_SOURCE_DIR}/headers/include)
++find_package (Eigen3 REQUIRED NO_MODULE)
+ 
+ # Add a library using FindPython's tooling (pybind11 also provides a helper like
+ # this)
+ python_add_library(_core MODULE src/main.cpp WITH_SOABI)
+-target_link_libraries(_core PRIVATE pybind11::headers)
++target_link_libraries(_core PRIVATE pybind11::headers Eigen3::Eigen)
+ 
+ # This is passing in the version as a define just as an example
+ target_compile_definitions(_core PRIVATE VERSION_INFO=${PROJECT_VERSION})
