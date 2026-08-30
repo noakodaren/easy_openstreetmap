@@ -2,6 +2,8 @@ This project allows easy installation and usage of the programs necessary to mak
 By following the instructions below, it is almost guaranteed that everything will work as intended, thanks to [nix](https://nixos.org/) (If it doesn't please tell me).
 This will be especially easy if all you want is a ski map as I have already written the code for this, but you can use this as a starting point for other custom maps.
 
+If you want some example maps generated with this project, see <https://github.com/noakodaren/openstreetmap-maps>.
+
 # Instructions:
 - You have to run this on linux (maybe it works on macOS too, but I haven't tested it).
   If you don't use linux normally, start by creating a virtual machine with linux.
